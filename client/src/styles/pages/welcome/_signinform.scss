@@ -1,0 +1,45 @@
+#sigin-form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font-family: "Dancing Script", cursive;
+    font-family: "Pacifico", cursive;
+    background-image: linear-gradient(
+      to left,
+      #5b51d8,
+      #833ab4,
+      #e1306c,
+      #fd1d1d,
+      #f56040
+    );
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .form-group {
+      margin-bottom: 40px;
+    }
+
+    button {
+      text-transform: uppercase;
+      font-style: italic;
+      border: whitesmoke;
+      background: linear-gradient(
+        to left,
+        #5b51d8,
+        #833ab4,
+        #e1306c,
+        #fd1d1d,
+        #f56040
+      );
+    }
+  }
+}

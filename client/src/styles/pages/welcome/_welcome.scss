@@ -1,0 +1,131 @@
+#welcome {
+  margin: 0px;
+  padding-top: 100px;
+  margin-bottom: 200px;
+
+  button {
+    text-transform: uppercase;
+    font-style: italic;
+    border: whitesmoke;
+    background: linear-gradient(
+      to left,
+      #5b51d8,
+      #833ab4,
+      #e1306c,
+      #fd1d1d,
+      #f56040
+    );
+  }
+
+  .welcome-img {
+    width: 600px;
+    height: 500px;
+    float: right;
+    margin-right: 20px;
+  }
+
+  .col-n1 {
+    width: 50%;
+  }
+  .col-n2 {
+    width: 50%;
+  }
+
+  .welcome-form {
+    width: 400px;
+    background-color: #ffffff;
+    border: 1px solid #bbbbbb;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+      padding: 30px;
+      font-family: "Dancing Script", cursive;
+      font-family: "Pacifico", cursive;
+      background-image: linear-gradient(
+        to left,
+        #5b51d8,
+        #833ab4,
+        #e1306c,
+        #fd1d1d,
+        #f56040
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .form-group {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  .welcome-no-count {
+    width: 400px;
+    background-color: #ffffff;
+    border: 1px solid #bbbbbb;
+    margin-top: 25px;
+    padding: 30px;
+    text-align: center;
+
+    strong {
+      color: #4db5f9;
+      cursor: pointer;
+      background-image: linear-gradient(
+        to left,
+        #5b51d8,
+        #833ab4,
+        #e1306c,
+        #fd1d1d,
+        #f56040
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  #welcome {
+    .welcome-img {
+      width: 500px;
+    }
+
+    .welcome-form {
+      width: 300px;
+    }
+
+    .welcome-no-count {
+      width: 300px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #welcome {
+    .justify-content-between {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .col-n1 {
+      display: none;
+    }
+
+    .welcome-form {
+      margin: auto;
+    }
+
+    .welcome-no-count {
+      margin: auto;
+      margin-top: 20px;
+    }
+  }
+}

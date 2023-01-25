@@ -1,0 +1,55 @@
+#UserImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .my-img {
+    overflow: hidden;
+    border-radius: 50px;
+    width: 250px;
+    height: 250px;
+    border: 2px solid transparent;
+    background: linear-gradient(
+      to left,
+      #5b51d8,
+      #833ab4,
+      #e1306c,
+      #fd1d1d,
+      #f56040
+    );
+  }
+
+  .loading-img {
+    background: none;
+    background-color: gray;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    width: 220px;
+    background: linear-gradient(
+      to left,
+      #5b51d8,
+      #833ab4,
+      #e1306c,
+      #fd1d1d,
+      #f56040
+    );
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-style: italic;
+
+    &::before {
+      content: "change profile picture";
+    }
+
+    &::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+  }
+}

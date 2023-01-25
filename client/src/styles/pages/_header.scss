@@ -1,0 +1,132 @@
+#header {
+  width: 100%;
+  position: fixed;
+  z-index: 100 !important;
+
+  .nav {
+    border: 2px solid transparent;
+    border-width: 0 0 2px;
+    background: linear-gradient(
+      to left,
+      #5b51d8,
+      #833ab4,
+      #e1306c,
+      #fd1d1d,
+      #f56040
+    );
+    background-color: black !important;
+
+    .toogle {
+      background-color: #d4d4d4;
+    }
+  }
+
+  .header-title {
+    font-family: "Dancing Script", cursive;
+    font-family: "Pacifico", cursive;
+    font-size: 2rem;
+    color: #d4d4d4;
+    text-decoration: none;
+
+    &:hover {
+      transition: 0.4s;
+      color: white;
+    }
+  }
+
+  .header-item {
+    font-size: 1.5rem;
+    margin-top: 8px;
+    margin-left: 25px;
+    color: #d4d4d4;
+    text-decoration: none;
+
+    &:hover {
+      transition: 0.4s;
+      color: white;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  .header-item-user {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    margin-left: 15px;
+
+    .dropdown-item {
+      &:active {
+        background: transparent;
+        color: black;
+      }
+    }
+  }
+
+  .item {
+    color: #d4d4d4;
+
+    &:hover {
+      transition: 0.4s;
+      color: white;
+    }
+  }
+  .header-form {
+    background-color: #e2e2e2;
+    padding: 5px;
+    border-radius: 5px;
+
+    .header-input {
+      background-color: transparent;
+      border: none;
+      color: gray;
+      box-shadow: none !important;
+
+      &:focus {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .header-search {
+    background-color: #e8e8e8;
+    padding: 20px 0;
+
+    .list {
+      margin: 0 60px;
+
+      .username {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .user-img {
+          overflow: hidden;
+          width: 50px;
+          height: 50px;
+          margin-right: 25px;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  #header {
+    .header-item {
+      span {
+        display: inline;
+        font-size: 1rem;
+      }
+    }
+
+    .header-item-user {
+      margin-left: 25px;
+    }
+  }
+}

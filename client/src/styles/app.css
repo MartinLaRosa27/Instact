@@ -1,0 +1,480 @@
+body {
+  background-color: #fafafa;
+}
+
+#welcome {
+  margin: 0px;
+  padding-top: 100px;
+  margin-bottom: 200px;
+}
+#welcome button {
+  text-transform: uppercase;
+  font-style: italic;
+  border: whitesmoke;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+}
+#welcome .welcome-img {
+  width: 600px;
+  height: 500px;
+  float: right;
+  margin-right: 20px;
+}
+#welcome .col-n1 {
+  width: 50%;
+}
+#welcome .col-n2 {
+  width: 50%;
+}
+#welcome .welcome-form {
+  width: 400px;
+  background-color: #ffffff;
+  border: 1px solid #bbbbbb;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#welcome .welcome-form h1 {
+  padding: 30px;
+  font-family: "Dancing Script", cursive;
+  font-family: "Pacifico", cursive;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#welcome .welcome-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#welcome .welcome-form form .form-group {
+  margin-bottom: 40px;
+}
+#welcome .welcome-no-count {
+  width: 400px;
+  background-color: #ffffff;
+  border: 1px solid #bbbbbb;
+  margin-top: 25px;
+  padding: 30px;
+  text-align: center;
+}
+#welcome .welcome-no-count strong {
+  color: #4db5f9;
+  cursor: pointer;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 992px) {
+  #welcome .welcome-img {
+    width: 500px;
+  }
+  #welcome .welcome-form {
+    width: 300px;
+  }
+  #welcome .welcome-no-count {
+    width: 300px;
+  }
+}
+@media (max-width: 768px) {
+  #welcome .justify-content-between {
+    flex-direction: column;
+    align-items: center;
+  }
+  #welcome .col-n1 {
+    display: none;
+  }
+  #welcome .welcome-form {
+    margin: auto;
+  }
+  #welcome .welcome-no-count {
+    margin: auto;
+    margin-top: 20px;
+  }
+}
+#sigin-form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#sigin-form h1 {
+  font-family: "Dancing Script", cursive;
+  font-family: "Pacifico", cursive;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#sigin-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#sigin-form form .form-group {
+  margin-bottom: 40px;
+}
+#sigin-form form button {
+  text-transform: uppercase;
+  font-style: italic;
+  border: whitesmoke;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+}
+
+#newPost {
+  padding-top: 100px;
+}
+#newPost h1 {
+  font-family: "Dancing Script", cursive;
+  font-family: "Pacifico", cursive;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#FormNewPost textarea {
+  height: 100px;
+  resize: none;
+}
+#FormNewPost button {
+  text-transform: uppercase;
+  font-style: italic;
+  border: whitesmoke;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+}
+
+#myAccount {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 1200px;
+  margin: auto;
+}
+#myAccount .col-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#myAccount .col-8 th:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#myAccount .col-8 .selected {
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#myAccount .col-8 tbody {
+  border: transparent;
+}
+
+#MyPosts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#MyPosts .card {
+  width: 500px;
+}
+#MyPosts .card small {
+  color: gray;
+}
+#MyPosts .card .card-title span:hover {
+  transition: 0.4s;
+  color: #fd1d1d;
+  cursor: pointer;
+}
+#MyPosts .btn-primary {
+  text-transform: uppercase;
+  font-style: italic;
+  border: whitesmoke;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+}
+#MyPosts .alert {
+  text-align: center;
+  width: 700px;
+  text-transform: uppercase;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+  cursor: pointer;
+}
+#MyPosts .alert:hover {
+  transition: 0.5s;
+  border: 1px solid black;
+}
+
+#MyFollowing .following-search {
+  width: 750px;
+}
+#MyFollowing .following-search .items .username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#MyFollowing .following-search .items .username .user-img {
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  margin-right: 25px;
+}
+#MyFollowing .following-search .items .username img {
+  width: 100%;
+}
+
+#UserImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#UserImage .my-img {
+  overflow: hidden;
+  border-radius: 50px;
+  width: 250px;
+  height: 250px;
+  border: 2px solid transparent;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+}
+#UserImage .loading-img {
+  background: none;
+  background-color: gray;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#UserImage input {
+  width: 220px;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  color: whitesmoke;
+  text-transform: uppercase;
+  font-style: italic;
+}
+#UserImage input::before {
+  content: "change profile picture";
+}
+#UserImage input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+#User-Username {
+  padding-top: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 1200px;
+  margin: auto;
+}
+#User-Username .spinner-grow {
+  background-image: linear-gradient(to left, #833ab4, #e1306c, #f56040);
+}
+#User-Username .col-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#User-Username .col-4 .buttons .btn {
+  text-transform: uppercase;
+  font-style: italic;
+}
+#User-Username .col-4 .buttons .btn:last-of-type {
+  margin-left: 15px;
+}
+#User-Username .col-4 .user-img {
+  overflow: hidden;
+  border-radius: 50px;
+  width: 250px;
+  height: 250px;
+  border: 2px solid transparent;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+}
+#User-Username .col-8 th:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#User-Username .col-8 .selected {
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#User-Username .col-8 tbody {
+  border: transparent;
+}
+#User-Username .col-8 h3 {
+  font-family: "Dancing Script", cursive;
+  font-family: "Pacifico", cursive;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#userPosts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#userPosts .card {
+  width: 500px;
+}
+#userPosts .card small {
+  color: gray;
+}
+#userPosts .card .card-title span:hover {
+  transition: 0.4s;
+  color: #fd1d1d;
+  cursor: pointer;
+}
+#userPosts .alert {
+  text-align: center;
+  width: 700px;
+  text-transform: uppercase;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+}
+
+#footer ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  list-style: none;
+}
+#footer li {
+  margin-right: 20px;
+  color: gray;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+#footer li:last-of-type {
+  margin-right: 0px;
+}
+#footer p {
+  color: gray;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  #footer li {
+    font-size: 0.5rem;
+  }
+  #footer p {
+    font-size: 0.7rem;
+  }
+}
+#header {
+  width: 100%;
+  position: fixed;
+  z-index: 100 !important;
+}
+#header .nav {
+  border: 2px solid transparent;
+  border-width: 0 0 2px;
+  background: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  background-color: black !important;
+}
+#header .nav .toogle {
+  background-color: #d4d4d4;
+}
+#header .header-title {
+  font-family: "Dancing Script", cursive;
+  font-family: "Pacifico", cursive;
+  font-size: 2rem;
+  color: #d4d4d4;
+  text-decoration: none;
+}
+#header .header-title:hover {
+  transition: 0.4s;
+  color: white;
+}
+#header .header-item {
+  font-size: 1.5rem;
+  margin-top: 8px;
+  margin-left: 25px;
+  color: #d4d4d4;
+  text-decoration: none;
+}
+#header .header-item:hover {
+  transition: 0.4s;
+  color: white;
+}
+#header .header-item span {
+  display: none;
+}
+#header .header-item-user {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  margin-left: 15px;
+}
+#header .header-item-user .dropdown-item:active {
+  background: transparent;
+  color: black;
+}
+#header .item {
+  color: #d4d4d4;
+}
+#header .item:hover {
+  transition: 0.4s;
+  color: white;
+}
+#header .header-form {
+  background-color: #e2e2e2;
+  padding: 5px;
+  border-radius: 5px;
+}
+#header .header-form .header-input {
+  background-color: transparent;
+  border: none;
+  color: gray;
+  box-shadow: none !important;
+}
+#header .header-form .header-input:focus {
+  background-color: transparent;
+}
+#header .header-search {
+  background-color: #e8e8e8;
+  padding: 20px 0;
+}
+#header .header-search .list {
+  margin: 0 60px;
+}
+#header .header-search .list .username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .header-search .list .username .user-img {
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  margin-right: 25px;
+}
+#header .header-search .list .username img {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  #header .header-item span {
+    display: inline;
+    font-size: 1rem;
+  }
+  #header .header-item-user {
+    margin-left: 25px;
+  }
+}/*# sourceMappingURL=app.css.map */

@@ -1,0 +1,20 @@
+#FormNewPost {
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+
+  button {
+    text-transform: uppercase;
+    font-style: italic;
+    border: whitesmoke;
+    background: linear-gradient(
+      to left,
+      #5b51d8,
+      #833ab4,
+      #e1306c,
+      #fd1d1d,
+      #f56040
+    );
+  }
+}

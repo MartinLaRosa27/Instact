@@ -1,0 +1,59 @@
+#MyPosts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .card {
+    width: 500px;
+
+    small {
+      color: gray;
+    }
+
+    .card-title {
+      span {
+        &:hover {
+          transition: 0.4s;
+          color: #fd1d1d;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .btn-primary {
+    text-transform: uppercase;
+    font-style: italic;
+    border: whitesmoke;
+    background: linear-gradient(
+      to left,
+      #5b51d8,
+      #833ab4,
+      #e1306c,
+      #fd1d1d,
+      #f56040
+    );
+  }
+
+  .alert {
+    text-align: center;
+    width: 700px;
+    text-transform: uppercase;
+    background: linear-gradient(
+      to left,
+      #5b51d8,
+      #833ab4,
+      #e1306c,
+      #fd1d1d,
+      #f56040
+    );
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    cursor: pointer;
+
+    &:hover {
+      transition: 0.5s;
+      border: 1px solid black;
+    }
+  }
+}
