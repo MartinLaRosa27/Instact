@@ -42,6 +42,11 @@ export const Header = ({ logged, userName }) => {
     router.push("/my-account");
   };
 
+  const handleClickNavigate = (username) => {
+    router.push(`/user/${username}`);
+    setSearchUser("");
+  };
+
   return (
     <div id="header">
       <Navbar bg="light" expand="lg" className="nav">
@@ -108,7 +113,10 @@ export const Header = ({ logged, userName }) => {
             return (
               <ul className="list-group list" key={user._id}>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
-                  <div className="username">
+                  <div
+                    className="username"
+                    onClick={() => handleClickNavigate(user.username)}
+                  >
                     <span className="badge rounded-pill user-img">
                       <img
                         src={user.image || process.env.NEXT_PUBLIC_USER_IMG_URL}

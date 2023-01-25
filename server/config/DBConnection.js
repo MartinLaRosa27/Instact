@@ -1,6 +1,7 @@
 require("../models/User");
 require("../models/Publication");
 require("../models/Tracing");
+require("../models/Block");
 const { DBConfiguration } = require("./DBConfiguration");
 
 module.exports.DBConnection = () => {

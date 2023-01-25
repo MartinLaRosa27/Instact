@@ -5,6 +5,11 @@ import { auth } from "../../../middleware/auth";
 import { getUserByNameStrict } from "../../../redux/slices/userSlice";
 import { useRouter } from "next/router";
 import { postTracing, deleteTracing } from "../../../redux/slices/tracingSlice";
+import {
+  deleteBlock,
+  postBlock,
+  verifyIsBlock,
+} from "../../../redux/slices/blockSlice";
 import { Posts } from "@/components/user/Posts";
 
 export default function Username({
@@ -22,11 +27,16 @@ export default function Username({
     setLogged(token);
     setUserName(username);
     const callGetUserByNameStrict = async () => {
-      const userAux = await getUserByNameStrict(usernameParam, token);
-      setUser(userAux);
-      if (!userAux) {
-        router.push("/");
-      }
+      await getUserByNameStrict(usernameParam, token).then(async (res) => {
+        if (res) {
+          const validation = await verifyIsBlock(res._id, token);
+          if (validation) {
+            router.push("/");
+          } else {
+            setUser(res);
+          }
+        }
+      });
     };
     callGetUserByNameStrict();
   }, []);
@@ -45,6 +55,20 @@ export default function Username({
     });
   };
 
+  const handleClickBlock = async (id) => {
+    await postBlock(id, token).then(async () => {
+      const userAux = await getUserByNameStrict(usernameParam, token);
+      setUser(userAux);
+    });
+  };
+
+  const handleClickUnblock = async (id) => {
+    await deleteBlock(id, token).then(async () => {
+      const userAux = await getUserByNameStrict(usernameParam, token);
+      setUser(userAux);
+    });
+  };
+
   return (
     <>
       <Head>
@@ -58,13 +82,16 @@ export default function Username({
         )}
         {user && (
           <div className="row">
+            <h3 className="mt-3 text-center mb-3 username-res">
+              {usernameParam}
+            </h3>
             <div className="col-4 information">
               <img
                 src={user.image || process.env.NEXT_PUBLIC_USER_IMG_URL}
                 className="mt-5 user-img"
               />
               <div className="buttons mt-3">
-                {user.following && (
+                {user.following ? (
                   <button
                     type="button"
                     className="btn btn-danger"
@@ -72,9 +99,7 @@ export default function Username({
                   >
                     Unfollow
                   </button>
-                )}
-
-                {!user.following && (
+                ) : (
                   <button
                     type="button"
                     className="btn btn-primary"
@@ -83,13 +108,29 @@ export default function Username({
                     Follow
                   </button>
                 )}
-                <button type="button" className="btn btn-warning">
-                  Block
-                </button>
+                {user.blocked ? (
+                  <button
+                    type="button"
+                    className="btn btn-warning"
+                    onClick={() => handleClickUnblock(user._id)}
+                  >
+                    Unblock
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-warning"
+                    onClick={() => handleClickBlock(user._id)}
+                  >
+                    Block
+                  </button>
+                )}
               </div>
             </div>
             <div className="col-8">
-              <h3 className="mt-3 text-center mb-3">{usernameParam}</h3>
+              <h3 className="mt-3 text-center mb-3 username-lrg">
+                {usernameParam}
+              </h3>
               <table className="table">
                 <thead>
                   <tr>

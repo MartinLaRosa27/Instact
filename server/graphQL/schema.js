@@ -8,6 +8,7 @@ module.exports.typeDefs = gql`
     fullName: String
     username: String
     following: String
+    blocked: String
   }
 
   type UserInformation {
@@ -53,6 +54,7 @@ module.exports.typeDefs = gql`
     getUserFollowing: [UserFollowing]
     getUserFollowers: [UserFollowing]
     getUserPersonalImg: User
+    verifyBlock(blocked: String): Boolean
   }
 
   type Mutation {
@@ -61,6 +63,8 @@ module.exports.typeDefs = gql`
     postPublication(input: publicationInput): String
     postTracing(following: String): String
     deleteTracing(following: String): String
+    postBlock(blocked: String): String
+    deleteBlock(blocked: String): String
     deletePublication(id: String): String
     pathUserImg(image: String!): String
   }

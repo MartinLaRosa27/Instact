@@ -19,6 +19,11 @@ const {
   getUserFollowing,
   getUserFollowers,
 } = require("../controllers/tracingController");
+const {
+  deleteBlock,
+  postBlock,
+  verifyBlock,
+} = require("../controllers/blockController");
 const { auth } = require("../middleware/auth");
 
 module.exports.resolvers = {
@@ -62,6 +67,11 @@ module.exports.resolvers = {
     getPublicationByName: (root, { username }, context) => {
       return getPublicationByName(username, context.user);
     },
+
+    // Block:
+    verifyBlock: (root, { blocked }, context) => {
+      return verifyBlock(blocked, context.user);
+    },
   },
 
   Mutation: {
@@ -94,6 +104,15 @@ module.exports.resolvers = {
 
     deleteTracing: (root, { following }, context) => {
       return deleteTracing(following, context.user);
+    },
+
+    // Block:
+    postBlock: (root, { blocked }, context) => {
+      return postBlock(blocked, context.user);
+    },
+
+    deleteBlock: (root, { blocked }, context) => {
+      return deleteBlock(blocked, context.user);
     },
   },
 };

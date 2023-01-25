@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
 const Publication = require("./Publication");
 const Tracing = require("./Tracing");
+const Block = require("./Block");
 const { DBConfiguration } = require("../config/DBConfiguration");
 
 const User = DBConfiguration.define("user", {
@@ -67,6 +68,7 @@ User.afterValidate(async (user) => {
   user.password = password;
 });
 User.hasMany(Tracing);
+User.hasMany(Block);
 User.hasMany(Publication);
 
 module.exports = User;

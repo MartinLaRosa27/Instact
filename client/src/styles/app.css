@@ -277,6 +277,17 @@ body {
 #User-Username .spinner-grow {
   background-image: linear-gradient(to left, #833ab4, #e1306c, #f56040);
 }
+#User-Username .username-res {
+  display: none;
+}
+#User-Username h3 {
+  font-family: "Dancing Script", cursive;
+  font-family: "Pacifico", cursive;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 #User-Username .col-4 {
   display: flex;
   flex-direction: column;
@@ -314,15 +325,23 @@ body {
 #User-Username .col-8 tbody {
   border: transparent;
 }
-#User-Username .col-8 h3 {
-  font-family: "Dancing Script", cursive;
-  font-family: "Pacifico", cursive;
-  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
-  -webkit-background-clip: text;
-          background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
+@media (max-width: 576px) {
+  #User-Username .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #User-Username .row .username-res {
+    display: block;
+  }
+  #User-Username .row .username-lrg {
+    display: none;
+  }
+  #User-Username .row .col-8 {
+    margin-top: 50px;
+  }
+}
 #userPosts {
   display: flex;
   flex-direction: column;
@@ -348,6 +367,11 @@ body {
   color: whitesmoke;
 }
 
+@media (max-width: 768px) {
+  #userPosts .card {
+    width: 400px;
+  }
+}
 #footer ul {
   display: flex;
   flex-direction: row;
@@ -458,6 +482,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 #header .header-search .list .username .user-img {
   overflow: hidden;

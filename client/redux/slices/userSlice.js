@@ -162,6 +162,7 @@ export const getUserByNameStrict = async (username, token) => {
         following
         image
         username
+        blocked
       }
     }
   `;

@@ -43,9 +43,9 @@ module.exports.getUserByName = async (username, user) => {
       const users = await User.sequelize.query(
         `SELECT u._id, u.image, u.username, t.following
         FROM users AS u 
-        LEFT OUTER JOIN tracings AS t 
-        ON t.userId =  "${user._id}" AND t.following = u._id
-        WHERE u.username LIKE "%${username}%" AND u._id <> "${user._id}"
+        LEFT OUTER JOIN tracings AS t ON t.userId =  "${user._id}" AND t.following = u._id
+        LEFT OUTER JOIN blocks AS b ON b.blocked =  "${user._id}" AND b.userId = u._id
+        WHERE u.username LIKE "%${username}%" AND u._id <> "${user._id}" AND b.blocked IS NULL
         LIMIT  5;`,
         {
           type: QueryTypes.SELECT,
@@ -66,10 +66,10 @@ module.exports.getUserByNameStrict = async (username, user) => {
   if (user !== null) {
     try {
       const users = await User.sequelize.query(
-        `SELECT u._id, u.image, u.username, t.following
+        `SELECT u._id, u.image, u.username, t.following, b.blocked
         FROM users AS u 
-        LEFT OUTER JOIN tracings AS t 
-        ON t.userId =  "${user._id}" AND t.following = u._id
+        LEFT OUTER JOIN tracings AS t ON t.userId =  "${user._id}" AND t.following = u._id
+        LEFT OUTER JOIN blocks AS b ON b.userId =  "${user._id}" AND b.blocked = u._id
         WHERE u.username = "${username}";`,
         {
           type: QueryTypes.SELECT,

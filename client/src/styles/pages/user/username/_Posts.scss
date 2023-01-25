@@ -37,3 +37,11 @@
     color: whitesmoke;
   }
 }
+
+@media (max-width: 768px) {
+  #userPosts {
+    .card {
+      width: 400px;
+    }
+  }
+}
