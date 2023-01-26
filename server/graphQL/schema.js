@@ -50,6 +50,7 @@ module.exports.typeDefs = gql`
     getUserByName(username: String): [User]
     getUserByNameStrict(username: String): User
     getMyPublications: [Publication]
+    getFollowingUserPublications: [Publication]
     getPublicationByName(username: String!): [Publication]
     getUserInformation: UserInformation
     getUserFollowing: [UserContact]

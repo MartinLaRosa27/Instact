@@ -2,6 +2,7 @@ import Head from "next/head";
 import * as cookie from "cookie";
 import { auth } from "../../middleware/auth";
 import React from "react";
+import { HomePosts } from "@/components/home/HomePosts";
 
 export default function Home({ setLogged, token, setUserName, username }) {
   React.useEffect(() => {
@@ -10,12 +11,12 @@ export default function Home({ setLogged, token, setUserName, username }) {
   }, []);
 
   return (
-    <>
+    <main id="Home">
       <Head>
         <title>Instact | Home</title>
       </Head>
-      <h1>Hola Mundo</h1>
-    </>
+      <HomePosts token={token} />
+    </main>
   );
 }
 

@@ -1,3 +1,7 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
   background-color: #fafafa;
 }
@@ -6,5 +10,6 @@ body {
 @import "pages/new-post/index";
 @import "pages/my-account/index";
 @import "pages/user/username/index";
+@import "pages/home/index";
 @import "pages/footer";
 @import "pages/header";

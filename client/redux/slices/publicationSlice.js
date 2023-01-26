@@ -9,15 +9,20 @@ export const publicationSlice = createSlice({
   name: "publicationSlice",
   initialState: {
     myPublications: null,
+    followPublications: null,
   },
   reducers: {
     setMyPublications: (state, action) => {
       state.myPublications = action.payload;
     },
+    setFollowPublications: (state, action) => {
+      state.followPublications = action.payload;
+    },
   },
 });
 export default publicationSlice.reducer;
 const { setMyPublications } = publicationSlice.actions;
+const { setFollowPublications } = publicationSlice.actions;
 
 export const postPublication = async (form, token) => {
   if (!form.image) {
@@ -199,4 +204,99 @@ export const deletePublication = async (id, token) => {
     .catch((e) => {
       console.log(e);
     });
+};
+
+export const getFollowingUserPublications = (token) => {
+  const GET_FOLLOW_PUBLICATIONS = gql`
+    query GetFollowingUserPublications {
+      getFollowingUserPublications {
+        _id
+        createdAt
+        description
+        image
+        username
+      }
+    }
+  `;
+  return async (dispatch) => {
+    await axios
+      .post(
+        `http://${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+        {
+          query: print(GET_FOLLOW_PUBLICATIONS),
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then(async (res) => {
+        if (!res.data.errors) {
+          for (
+            let i = 0;
+            i < res.data.data.getFollowingUserPublications.length;
+            i++
+          ) {
+            res.data.data.getFollowingUserPublications[i].createdAt =
+              formatDate(
+                res.data.data.getFollowingUserPublications[i].createdAt
+              );
+          }
+          dispatch(
+            setFollowPublications(res.data.data.getFollowingUserPublications)
+          );
+        } else {
+          dispatch(setFollowPublications([]));
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+};
+
+export const checkFollowingUserPublications = async (token) => {
+  let publications = null;
+  const GET_FOLLOW_PUBLICATIONS = gql`
+    query GetFollowingUserPublications {
+      getFollowingUserPublications {
+        _id
+        createdAt
+        description
+        image
+        username
+      }
+    }
+  `;
+  await axios
+    .post(
+      `http://${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+      {
+        query: print(GET_FOLLOW_PUBLICATIONS),
+      },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
+    .then(async (res) => {
+      if (!res.data.errors) {
+        for (
+          let i = 0;
+          i < res.data.data.getFollowingUserPublications.length;
+          i++
+        ) {
+          res.data.data.getFollowingUserPublications[i].createdAt = formatDate(
+            res.data.data.getFollowingUserPublications[i].createdAt
+          );
+        }
+        publications = res.data.data.getFollowingUserPublications;
+      }
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+  return publications;
 };
