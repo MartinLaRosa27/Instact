@@ -13,6 +13,7 @@ const {
   deletePublication,
   getPublicationByName,
   getFollowingUserPublications,
+  getLikedPublications,
 } = require("../controllers/publicationController");
 const {
   postTracing,
@@ -26,6 +27,7 @@ const {
   verifyBlock,
   getUserBlocked,
 } = require("../controllers/blockController");
+const { genereteLike } = require("../controllers/likeController");
 const { auth } = require("../middleware/auth");
 
 module.exports.resolvers = {
@@ -72,6 +74,10 @@ module.exports.resolvers = {
 
     getPublicationByName: (root, { username }, context) => {
       return getPublicationByName(username, context.user);
+    },
+
+    getLikedPublications: (root, { username }, context) => {
+      return getLikedPublications(context.user);
     },
 
     // Block:
@@ -123,6 +129,11 @@ module.exports.resolvers = {
 
     deleteBlock: (root, { blocked }, context) => {
       return deleteBlock(blocked, context.user);
+    },
+
+    // Like:
+    genereteLike: (root, { likedPost }, context) => {
+      return genereteLike(likedPost, context.user);
     },
   },
 };

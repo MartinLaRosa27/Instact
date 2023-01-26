@@ -6,7 +6,8 @@ import {
   getMyPublications,
   deletePublication,
 } from "../../../redux/slices/publicationSlice";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { generateLike } from "../../../redux/slices/likeSlice";
 import { useRouter } from "next/router";
 
 export const MyPosts = ({ token, setInformation }) => {
@@ -21,6 +22,11 @@ export const MyPosts = ({ token, setInformation }) => {
 
   const handleClick = () => {
     router.push("/new-post");
+  };
+
+  const handleClickGenerateLike = async (id) => {
+    await generateLike(id, token);
+    dispatch(getMyPublications(token));
   };
 
   const handleClickDeletePost = async (id) => {
@@ -70,10 +76,17 @@ export const MyPosts = ({ token, setInformation }) => {
                   <h5 className="card-title">
                     {myPublication.username}
                     {" | "}
-                    <span>
-                      <AiOutlineHeart />
-                    </span>{" "}
-                    10
+                    <span
+                      onClick={() => handleClickGenerateLike(myPublication._id)}
+                    >
+                      {myPublication.liked ? (
+                        <span className="full-heart">
+                          <AiFillHeart />
+                        </span>
+                      ) : (
+                        <AiOutlineHeart />
+                      )}
+                    </span>
                   </h5>
                   <p className="card-text">{myPublication.description}</p>
                   <small className="fst-italic">

@@ -67,7 +67,7 @@ export const Header = ({ logged, userName }) => {
               <Link href="/new-post" className="header-item">
                 <BiMessageSquareAdd /> <span>New Post</span>
               </Link>
-              <Link href="/action1" className="header-item">
+              <Link href="/my-likes" className="header-item">
                 <AiOutlineHeart /> <span>Favorites</span>
               </Link>
               <NavDropdown

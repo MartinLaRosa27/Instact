@@ -2,6 +2,7 @@ require("../models/User");
 require("../models/Publication");
 require("../models/Tracing");
 require("../models/Block");
+require("../models/Like");
 const { DBConfiguration } = require("./DBConfiguration");
 
 module.exports.DBConnection = () => {

@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const Publication = require("./Publication");
 const Tracing = require("./Tracing");
 const Block = require("./Block");
+const Like = require("./Like");
 const { DBConfiguration } = require("../config/DBConfiguration");
 
 const User = DBConfiguration.define("user", {
@@ -69,6 +70,7 @@ User.afterValidate(async (user) => {
 });
 User.hasMany(Tracing);
 User.hasMany(Block);
+User.hasMany(Like);
 User.hasMany(Publication);
 
 module.exports = User;

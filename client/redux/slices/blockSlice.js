@@ -39,7 +39,7 @@ export const postBlock = async (blocked, token) => {
         },
       }
     )
-    .then(async (res) => {
+    .then((res) => {
       if (!res.data.errors) {
         toast.success(res.data.data.postBlock, {
           style: {
@@ -82,7 +82,7 @@ export const deleteBlock = async (blocked, token) => {
         },
       }
     )
-    .then(async (res) => {
+    .then((res) => {
       if (!res.data.errors) {
         toast.success(res.data.data.deleteBlock, {
           style: {
@@ -126,7 +126,7 @@ export const verifyIsBlock = async (blocked, token) => {
         },
       }
     )
-    .then(async (res) => {
+    .then((res) => {
       if (!res.data.errors) {
         validation = res.data.data.verifyBlock;
       }
@@ -160,7 +160,7 @@ export const getUserBlocked = (token) => {
           },
         }
       )
-      .then(async (res) => {
+      .then((res) => {
         if (!res.data.errors) {
           dispatch(setBlockedList(res.data.data.getUserBlocked));
         } else {

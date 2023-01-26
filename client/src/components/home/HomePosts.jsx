@@ -4,7 +4,8 @@ import {
   getFollowingUserPublications,
   checkFollowingUserPublications,
 } from "../../../redux/slices/publicationSlice";
-import { AiOutlineHeart, AiOutlineReload } from "react-icons/ai";
+import { generateLike } from "../../../redux/slices/likeSlice";
+import { AiOutlineHeart, AiOutlineReload, AiFillHeart } from "react-icons/ai";
 
 export const HomePosts = ({ token }) => {
   const [check, setCheck] = React.useState(null);
@@ -17,12 +18,17 @@ export const HomePosts = ({ token }) => {
     const checkPublications = () => {
       setInterval(async () => {
         setCheck(await checkFollowingUserPublications(token));
-      }, 2000);
+      }, 10000);
     };
     checkPublications();
   }, []);
 
   const handleClickPosts = () => {
+    dispatch(getFollowingUserPublications(token));
+  };
+
+  const handleClickGenerateLike = async (followPublication) => {
+    await generateLike(followPublication._id, token);
     dispatch(getFollowingUserPublications(token));
   };
 
@@ -68,10 +74,17 @@ export const HomePosts = ({ token }) => {
                   <h5 className="card-title">
                     {followPublication.username}
                     {" | "}
-                    <span>
-                      <AiOutlineHeart />
-                    </span>{" "}
-                    10
+                    <span
+                      onClick={() => handleClickGenerateLike(followPublication)}
+                    >
+                      {followPublication.liked ? (
+                        <span className="full-heart">
+                          <AiFillHeart />
+                        </span>
+                      ) : (
+                        <AiOutlineHeart />
+                      )}
+                    </span>
                   </h5>
                   <p className="card-text">{followPublication.description}</p>
                   <small className="fst-italic">

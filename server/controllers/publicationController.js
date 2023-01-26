@@ -24,9 +24,10 @@ module.exports.getMyPublications = async (user) => {
   if (user !== null) {
     try {
       const publications = await Publication.sequelize.query(
-        `SELECT p._id, u.username, p.createdAt, p.description, p.image
+        `SELECT p._id, u.username, p.createdAt, p.description, p.image, IF(l._id IS NULL, 0, 1) AS liked
         FROM publications AS p
-       INNER JOIN users AS u ON u._id = p.userId
+        INNER JOIN users AS u ON u._id = p.userId
+        LEFT OUTER JOIN likes AS l ON l.likedPost = p._id
         WHERE p.userId = "${user._id}"
         ORDER BY p.createdAt DESC;`,
         {
@@ -64,9 +65,10 @@ module.exports.getPublicationByName = async (username, user) => {
   if (user !== null) {
     try {
       const publications = await Publication.sequelize.query(
-        `SELECT p._id, u.username, p.createdAt, p.description, p.image
+        `SELECT p._id, u.username, p.createdAt, p.description, p.image, IF(l._id IS NULL, 0, 1) AS liked
         FROM publications AS p
         INNER JOIN users AS u ON u._id = p.userId
+        LEFT OUTER JOIN likes AS l ON l.likedPost = p._id
         WHERE u.username = "${username}"
         ORDER BY p.createdAt DESC;`,
         {
@@ -86,12 +88,39 @@ module.exports.getFollowingUserPublications = async (user) => {
   if (user !== null) {
     try {
       const publications = await Publication.sequelize.query(
+        `SELECT p._id, u.username, p.createdAt, p.description, p.image, IF(l._id IS NULL, 0, 1) AS liked
+        FROM publications AS p
+        INNER JOIN users AS u ON u._id = p.userId
+        INNER JOIN tracings AS t ON t.following = u._id AND t.userId = "${user._id}"
+        LEFT OUTER JOIN blocks AS b ON b.userId = u._id AND b.blocked = "${user._id}"
+        LEFT OUTER JOIN blocks AS bb ON bb.blocked = u._id AND bb.userId = "${user._id}"
+        LEFT OUTER JOIN likes AS l ON l.likedPost = p._id
+        WHERE b._id IS NULL AND bb._id IS NULL
+        ORDER BY p.createdAt DESC;`,
+        {
+          type: QueryTypes.SELECT,
+        }
+      );
+      return publications;
+    } catch (e) {
+      console.log(e);
+      throw new Error(e.errors[0].message);
+    }
+  }
+  throw new Error("session expired");
+};
+
+module.exports.getLikedPublications = async (user) => {
+  if (user !== null) {
+    try {
+      const publications = await Publication.sequelize.query(
         `SELECT p._id, u.username, p.createdAt, p.description, p.image
         FROM publications AS p
         INNER JOIN users AS u ON u._id = p.userId
         INNER JOIN tracings AS t ON t.following = u._id AND t.userId = "${user._id}"
         LEFT OUTER JOIN blocks AS b ON b.userId = u._id AND b.blocked = "${user._id}"
         LEFT OUTER JOIN blocks AS bb ON bb.blocked = u._id AND bb.userId = "${user._id}"
+        INNER JOIN likes AS l ON l.likedPost = p._id AND l.userId = "${user._id}"
         WHERE b._id IS NULL AND bb._id IS NULL
         ORDER BY p.createdAt DESC;`,
         {

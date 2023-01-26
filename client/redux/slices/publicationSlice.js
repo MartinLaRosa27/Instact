@@ -10,6 +10,7 @@ export const publicationSlice = createSlice({
   initialState: {
     myPublications: null,
     followPublications: null,
+    likedPosts: null,
   },
   reducers: {
     setMyPublications: (state, action) => {
@@ -18,11 +19,15 @@ export const publicationSlice = createSlice({
     setFollowPublications: (state, action) => {
       state.followPublications = action.payload;
     },
+    setLikedPosts: (state, action) => {
+      state.likedPosts = action.payload;
+    },
   },
 });
 export default publicationSlice.reducer;
 const { setMyPublications } = publicationSlice.actions;
 const { setFollowPublications } = publicationSlice.actions;
+const { setLikedPosts } = publicationSlice.actions;
 
 export const postPublication = async (form, token) => {
   if (!form.image) {
@@ -85,6 +90,7 @@ export const getMyPublications = (token) => {
         image
         createdAt
         username
+        liked
       }
     }
   `;
@@ -129,6 +135,7 @@ export const getPublicationByName = async (username, token) => {
         description
         image
         username
+        liked
       }
     }
   `;
@@ -215,6 +222,7 @@ export const getFollowingUserPublications = (token) => {
         description
         image
         username
+        liked
       }
     }
   `;
@@ -299,4 +307,47 @@ export const checkFollowingUserPublications = async (token) => {
       console.log(e);
     });
   return publications;
+};
+
+export const getLikedPublications = (token) => {
+  const GET_LIKED_PUBLICATIONS = gql`
+    query GetLikedPublications {
+      getLikedPublications {
+        description
+        createdAt
+        _id
+        image
+        username
+      }
+    }
+  `;
+  return async (dispatch) => {
+    await axios
+      .post(
+        `http://${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+        {
+          query: print(GET_LIKED_PUBLICATIONS),
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then(async (res) => {
+        if (!res.data.errors) {
+          for (let i = 0; i < res.data.data.getLikedPublications.length; i++) {
+            res.data.data.getLikedPublications[i].createdAt = formatDate(
+              res.data.data.getLikedPublications[i].createdAt
+            );
+          }
+          dispatch(setLikedPosts(res.data.data.getLikedPublications));
+        } else {
+          dispatch(setLikedPosts([]));
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 };

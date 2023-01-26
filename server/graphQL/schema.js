@@ -31,6 +31,7 @@ module.exports.typeDefs = gql`
     description: String
     image: String
     createdAt: Date
+    liked: Int
   }
 
   input userInput {
@@ -51,6 +52,7 @@ module.exports.typeDefs = gql`
     getUserByNameStrict(username: String): User
     getMyPublications: [Publication]
     getFollowingUserPublications: [Publication]
+    getLikedPublications: [Publication]
     getPublicationByName(username: String!): [Publication]
     getUserInformation: UserInformation
     getUserFollowing: [UserContact]
@@ -70,5 +72,6 @@ module.exports.typeDefs = gql`
     deleteBlock(blocked: String): String
     deletePublication(id: String): String
     pathUserImg(image: String!): String
+    genereteLike(likedPost: String): String
   }
 `;

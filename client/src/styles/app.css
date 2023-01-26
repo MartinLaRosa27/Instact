@@ -212,6 +212,9 @@ body {
   color: #fd1d1d;
   cursor: pointer;
 }
+#MyPosts .card .card-title span .full-heart {
+  color: #b90b0b;
+}
 #MyPosts .btn-primary {
   text-transform: uppercase;
   font-style: italic;
@@ -378,6 +381,9 @@ body {
   color: #fd1d1d;
   cursor: pointer;
 }
+#userPosts .card .card-title span .full-heart {
+  color: #b90b0b;
+}
 #userPosts .alert {
   text-align: center;
   width: 700px;
@@ -421,6 +427,9 @@ body {
   transition: 0.4s;
   color: #fd1d1d;
   cursor: pointer;
+}
+#HomePosts .card .card-title span .full-heart {
+  color: #b90b0b;
 }
 #HomePosts .btn-primary {
   text-transform: uppercase;

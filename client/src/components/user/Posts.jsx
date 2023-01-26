@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { getPublicationByName } from "../../../redux/slices/publicationSlice";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { generateLike } from "../../../redux/slices/likeSlice";
 
 export const Posts = ({ username, token }) => {
   const [posts, setPosts] = useState(null);
 
+  const callGetPublicationByName = async () => {
+    setPosts(await getPublicationByName(username, token));
+  };
+
+  const handleClickGenerateLike = async (id) => {
+    await generateLike(id, token);
+    callGetPublicationByName();
+  };
+
   useEffect(() => {
-    const callGetPublicationByName = async () => {
-      setPosts(await getPublicationByName(username, token));
-    };
     callGetPublicationByName();
   }, []);
 
@@ -33,10 +40,15 @@ export const Posts = ({ username, token }) => {
                   <h5 className="card-title">
                     {post.username}
                     {" | "}
-                    <span>
-                      <AiOutlineHeart />
-                    </span>{" "}
-                    10
+                    <span onClick={() => handleClickGenerateLike(post._id)}>
+                      {post.liked ? (
+                        <span className="full-heart">
+                          <AiFillHeart />
+                        </span>
+                      ) : (
+                        <AiOutlineHeart />
+                      )}
+                    </span>
                   </h5>
                   <p className="card-text">{post.description}</p>
                   <small className="fst-italic">
