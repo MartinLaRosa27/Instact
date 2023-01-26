@@ -84,7 +84,8 @@ module.exports.getUserFollowers = async (user) => {
         `SELECT u._id, u.username, u.image
         FROM tracings AS t
         INNER JOIN users AS u ON t.userId = u._id
-        WHERE t.following = "${user._id}";`,
+        LEFT OUTER JOIN blocks AS b ON b.blocked =  "${user._id}" AND b.userId = u._id
+        WHERE t.following = "${user._id}" AND b.blocked IS NULL;`,
         {
           type: QueryTypes.SELECT,
         }

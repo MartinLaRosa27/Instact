@@ -23,6 +23,7 @@ const {
   deleteBlock,
   postBlock,
   verifyBlock,
+  getUserBlocked
 } = require("../controllers/blockController");
 const { auth } = require("../middleware/auth");
 
@@ -37,20 +38,20 @@ module.exports.resolvers = {
       return getUserByNameStrict(username, context.user);
     },
 
-    getUserInformation: (root, {}, context) => {
+    getUserInformation: (root, { }, context) => {
       return getUserInformation(context.user);
     },
 
-    getUserPersonalImg: (root, {}, context) => {
+    getUserPersonalImg: (root, { }, context) => {
       return getUserPersonalImg(context.user);
     },
 
     // Tracing:
-    getUserFollowing: (root, {}, context) => {
+    getUserFollowing: (root, { }, context) => {
       return getUserFollowing(context.user);
     },
 
-    getUserFollowers: (root, {}, context) => {
+    getUserFollowers: (root, { }, context) => {
       return getUserFollowers(context.user);
     },
 
@@ -60,7 +61,7 @@ module.exports.resolvers = {
     },
 
     // Publication:
-    getMyPublications: (root, {}, context) => {
+    getMyPublications: (root, { }, context) => {
       return getMyPublications(context.user);
     },
 
@@ -71,6 +72,10 @@ module.exports.resolvers = {
     // Block:
     verifyBlock: (root, { blocked }, context) => {
       return verifyBlock(blocked, context.user);
+    },
+
+    getUserBlocked: (root, { }, context) => {
+      return getUserBlocked(context.user);
     },
   },
 

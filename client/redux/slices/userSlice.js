@@ -200,6 +200,7 @@ export const getUserInformation = async (token) => {
         followersQ
         followingQ
         publicationsQ
+        blockedQ
       }
     }
   `;

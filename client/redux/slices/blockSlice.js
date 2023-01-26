@@ -6,10 +6,17 @@ import { toast } from "react-hot-toast";
 
 export const blockSlice = createSlice({
   name: "blockSlice",
-  initialState: {},
-  reducers: {},
+  initialState: {
+    blockedList: null,
+  },
+  reducers: {
+    setBlockedList: (state, action) => {
+      state.blockedList = action.payload;
+    },
+  },
 });
 export default blockSlice.reducer;
+const { setBlockedList } = blockSlice.actions;
 
 export const postBlock = async (blocked, token) => {
   const POST_BLOCK = gql`
@@ -128,4 +135,40 @@ export const verifyIsBlock = async (blocked, token) => {
       console.log(e);
     });
   return validation;
+};
+
+export const getUserBlocked = (token) => {
+  const USER_BLOCKED = gql`
+    query GetUserBlocked {
+      getUserBlocked {
+        username
+        image
+        _id
+      }
+    }
+  `;
+  return async (dispatch) => {
+    await axios
+      .post(
+        `http://${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+        {
+          query: print(USER_BLOCKED),
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then(async (res) => {
+        if (!res.data.errors) {
+          dispatch(setBlockedList(res.data.data.getUserBlocked));
+        } else {
+          dispatch(setBlockedList([]));
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 };

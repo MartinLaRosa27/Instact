@@ -15,9 +15,10 @@ module.exports.typeDefs = gql`
     publicationsQ: Int
     followingQ: Int
     followersQ: Int
+    blockedQ: Int
   }
 
-  type UserFollowing {
+  type UserContact {
     _id: String
     username: String
     image: String
@@ -51,8 +52,9 @@ module.exports.typeDefs = gql`
     getMyPublications: [Publication]
     getPublicationByName(username: String!): [Publication]
     getUserInformation: UserInformation
-    getUserFollowing: [UserFollowing]
-    getUserFollowers: [UserFollowing]
+    getUserFollowing: [UserContact]
+    getUserBlocked: [UserContact]
+    getUserFollowers: [UserContact]
     getUserPersonalImg: User
     verifyBlock(blocked: String): Boolean
   }

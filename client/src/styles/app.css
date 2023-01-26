@@ -153,6 +153,12 @@ body {
   width: 1200px;
   margin: auto;
 }
+#myAccount .username {
+  cursor: pointer;
+}
+#myAccount .btn {
+  text-transform: uppercase;
+}
 #myAccount .col-4 {
   display: flex;
   flex-direction: column;
@@ -176,6 +182,16 @@ body {
   border: transparent;
 }
 
+@media (max-width: 576px) {
+  #myAccount .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #myAccount .row .col-8 {
+    margin-top: 50px;
+  }
+}
 #MyPosts {
   display: flex;
   flex-direction: column;

@@ -7,6 +7,7 @@ import { MyFollowing } from "@/components/my_account/MyFollowing";
 import { MyFollowers } from "@/components/my_account/MyFollowers";
 import { getUserInformation } from "../../redux/slices/userSlice";
 import { UserImage } from "@/components/my_account/UserImage";
+import { MyBlockedUsers } from "@/components/my_account/MyBlockedUsers";
 
 export default function MyAccount({
   setLogged,
@@ -19,6 +20,7 @@ export default function MyAccount({
   const [posts, setPosts] = React.useState(true);
   const [following, setFollowing] = React.useState(false);
   const [followers, setFollowers] = React.useState(false);
+  const [blocked, setBlocked] = React.useState(false);
 
   React.useEffect(() => {
     setLogged(token);
@@ -33,18 +35,28 @@ export default function MyAccount({
     setPosts(true);
     setFollowing(false);
     setFollowers(false);
+    setBlocked(false);
   };
 
   const showFollowing = () => {
     setPosts(false);
     setFollowing(true);
     setFollowers(false);
+    setBlocked(false);
   };
 
   const showFollowers = () => {
     setPosts(false);
     setFollowing(false);
     setFollowers(true);
+    setBlocked(false);
+  };
+
+  const showBlocked = () => {
+    setPosts(false);
+    setFollowing(false);
+    setFollowers(false);
+    setBlocked(true);
   };
 
   return (
@@ -94,6 +106,17 @@ export default function MyAccount({
                   >
                     Followers
                   </th>
+                  <th
+                    scope="col"
+                    className={
+                      blocked
+                        ? "text-center text-uppercase selected"
+                        : "text-center text-uppercase"
+                    }
+                    onClick={() => showBlocked()}
+                  >
+                    blocked users
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -110,6 +133,10 @@ export default function MyAccount({
                       {" "}
                       {information.followersQ}
                     </td>
+                    <td className="text-center text-uppercase">
+                      {" "}
+                      {information.blockedQ}
+                    </td>
                   </tr>
                 )}
               </tbody>
@@ -119,6 +146,9 @@ export default function MyAccount({
               <MyFollowing token={token} setInformation={setInformation} />
             )}
             {followers && <MyFollowers token={token} />}
+            {blocked && (
+              <MyBlockedUsers token={token} setInformation={setInformation} />
+            )}
           </div>
         </div>
       </div>

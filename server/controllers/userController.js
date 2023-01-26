@@ -88,11 +88,13 @@ module.exports.getUserInformation = async (user) => {
   if (user !== null) {
     try {
       const userInformation = await User.sequelize.query(
-        `SELECT COUNT(DISTINCT P._id) AS publicationsQ, COUNT(DISTINCT t.following) AS followingQ, COUNT(DISTINCT tt.following) AS followersQ
+        `SELECT COUNT(DISTINCT P._id) AS publicationsQ, COUNT(DISTINCT t.following) AS followingQ, 
+        COUNT(DISTINCT tt.following) AS followersQ, COUNT(DISTINCT b.blocked) AS blockedQ
         FROM users AS u 
         LEFT OUTER JOIN publications AS p ON p.userId = "${user._id}"
         LEFT OUTER JOIN tracings AS t ON t.userId = "${user._id}"
-        LEFT OUTER JOIN tracings AS tt ON tt.following ="${user._id}"
+        LEFT OUTER JOIN blocks AS b ON b.userId = "${user._id}"
+        LEFT OUTER JOIN tracings AS tt ON tt.following ="${user._id}" AND b.userId IS NOT NULL
         WHERE u._id = "${user._id}";`,
         {
           type: QueryTypes.SELECT,

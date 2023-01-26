@@ -1,5 +1,6 @@
 const shortid = require("shortid");
 const Block = require("../models/Block");
+const { QueryTypes } = require("sequelize");
 
 module.exports.postBlock = async (blocked, user) => {
   if (user !== null) {
@@ -66,6 +67,28 @@ module.exports.verifyBlock = async (id, user) => {
       return true;
     }
     return false;
+  }
+  throw new Error("session expired");
+};
+
+module.exports.getUserBlocked = async (user) => {
+  if (user !== null) {
+    try {
+      const userBlocked = await Block.sequelize.query(
+        `
+        SELECT u._id, u.username, u.image
+        FROM blocks AS b
+        INNER JOIN users AS u ON b.blocked = u._id
+        WHERE b.userId = "${user._id}";`,
+        {
+          type: QueryTypes.SELECT,
+        }
+      );
+      return userBlocked;
+    } catch (e) {
+      console.log(e);
+      throw new Error("Could not get the accounts that the user block.");
+    }
   }
   throw new Error("session expired");
 };
