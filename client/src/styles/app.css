@@ -320,9 +320,10 @@ body {
 #User-Username .col-4 .buttons .btn {
   text-transform: uppercase;
   font-style: italic;
+  margin-right: 15px;
 }
 #User-Username .col-4 .buttons .btn:last-of-type {
-  margin-left: 15px;
+  margin-right: 0px;
 }
 #User-Username .col-4 .user-img {
   overflow: hidden;
@@ -422,6 +423,13 @@ body {
 }
 #HomePosts .card small {
   color: gray;
+}
+#HomePosts .card .card-title strong:hover {
+  cursor: pointer;
+  background-image: linear-gradient(to left, #5b51d8, #833ab4, #e1306c, #fd1d1d, #f56040);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 #HomePosts .card .card-title span:hover {
   transition: 0.4s;

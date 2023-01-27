@@ -22,7 +22,7 @@ export default function Username({
   const router = useRouter();
 
   const [user, setUser] = React.useState(null);
-
+  
   React.useEffect(() => {
     setLogged(token);
     setUserName(username);
@@ -67,6 +67,10 @@ export default function Username({
       const userAux = await getUserByNameStrict(usernameParam, token);
       setUser(userAux);
     });
+  };
+
+  const handleClickSendMessages = () => {
+    router.push(`/messages/${usernameParam}`);
   };
 
   return (

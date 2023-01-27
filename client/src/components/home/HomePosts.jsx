@@ -6,8 +6,11 @@ import {
 } from "../../../redux/slices/publicationSlice";
 import { generateLike } from "../../../redux/slices/likeSlice";
 import { AiOutlineHeart, AiOutlineReload, AiFillHeart } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 export const HomePosts = ({ token }) => {
+  const router = useRouter();
+
   const [check, setCheck] = React.useState(null);
 
   const { followPublications } = useSelector((state) => state.publicationSlice);
@@ -30,6 +33,10 @@ export const HomePosts = ({ token }) => {
   const handleClickGenerateLike = async (followPublication) => {
     await generateLike(followPublication._id, token);
     dispatch(getFollowingUserPublications(token));
+  };
+
+  const handleClickNavigateToUser = (username) => {
+    router.push(`/user/${username}`);
   };
 
   return (
@@ -72,7 +79,13 @@ export const HomePosts = ({ token }) => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">
-                    {followPublication.username}
+                    <strong
+                      onClick={() =>
+                        handleClickNavigateToUser(followPublication.username)
+                      }
+                    >
+                      {followPublication.username}
+                    </strong>
                     {" | "}
                     <span
                       onClick={() => handleClickGenerateLike(followPublication)}

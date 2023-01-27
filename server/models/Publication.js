@@ -21,7 +21,6 @@ const Publication = DBConfiguration.define("publication", {
     type: Sequelize.STRING(500),
     allowNull: false,
     validate: {
-      len: [1, 255],
       notEmpty: true,
     },
   },

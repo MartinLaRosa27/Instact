@@ -26,6 +26,22 @@
     }
 
     .card-title {
+      strong {
+        &:hover {
+          cursor: pointer;
+          background-image: linear-gradient(
+            to left,
+            #5b51d8,
+            #833ab4,
+            #e1306c,
+            #fd1d1d,
+            #f56040
+          );
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
       span {
         &:hover {
           transition: 0.4s;

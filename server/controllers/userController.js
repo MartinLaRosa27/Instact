@@ -94,7 +94,7 @@ module.exports.getUserInformation = async (user) => {
         LEFT OUTER JOIN publications AS p ON p.userId = "${user._id}"
         LEFT OUTER JOIN tracings AS t ON t.userId = "${user._id}"
         LEFT OUTER JOIN blocks AS b ON b.userId = "${user._id}"
-        LEFT OUTER JOIN tracings AS tt ON tt.following ="${user._id}" AND b.userId IS NOT NULL
+        LEFT OUTER JOIN tracings AS tt ON tt.following ="${user._id}"
         WHERE u._id = "${user._id}";`,
         {
           type: QueryTypes.SELECT,

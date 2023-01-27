@@ -38,8 +38,9 @@
       .btn {
         text-transform: uppercase;
         font-style: italic;
+        margin-right: 15px;
         &:last-of-type {
-          margin-left: 15px;
+          margin-right: 0px;
         }
       }
     }
