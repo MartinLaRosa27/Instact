@@ -20,8 +20,8 @@ HTML / CSS / SASS / Bootstrap5 / React.js / Next.js / Node.js / Sequelize / MySQ
 ### Captures:
 
 ![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot01.png?raw=true)
-![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot01.png?raw=true)
-![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot01.png?raw=true)
-![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot01.png?raw=true)
-![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot01.png?raw=true)
-![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot01.png?raw=true)
+![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot02.png?raw=true)
+![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot03.png?raw=true)
+![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot04.png?raw=true)
+![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot05.png?raw=true)
+![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot06.png?raw=true)
