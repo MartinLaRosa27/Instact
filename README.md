@@ -2,8 +2,7 @@
 
 ### Description:
 
-Website similar to the social network _Instagram_, whose purpose is to search for and facilitate communication between users, sharing their publications.
-Main functionalities of the website:
+Website similar to the social network _Instagram_, whose purpose is to facilitate the communication between users, sharing their posts to each other.
 
 1. To access the social network, users must register with an email.
 2. Registered users can publish the images that they wish, accompanied by a mandatory description.
