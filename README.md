@@ -1,4 +1,4 @@
-## Instact-ReactJs
+## Instact
 
 ### Description:
 
@@ -16,7 +16,7 @@ Website similar to the social network _Instagram_, whose purpose is to facilitat
 
 HTML / CSS / SASS / Bootstrap5 / React.js / Next.js / Node.js / Sequelize / MySQL / GraphQL / Apollo Server / Redux
 
-### Captures:
+### Screenshots:
 
 ![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot01.png?raw=true)
 ![alt text](https://github.com/MartinLaRosa27/Instact-ReactJs/blob/main/resources/screnshot02.png?raw=true)
